@@ -1,10 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Growing Little Gadis</title>
+
+<style>
+body{
+margin:0;
+font-family:sans-serif;
+background:linear-gradient(#ffd6e7,#fff);
+text-align:center;
+padding:20px;
+}
+
+.card{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 4px 20px rgba(0,0,0,.1);
+}
+
+.mascot{
+width:250px;
+max-width:90%;
+}
+
+.bubble{
+background:#fff0f6;
+padding:12px;
+border-radius:15px;
+margin-bottom:15px;
+font-weight:bold;
+}
+
+.bar{
+height:24px;
+background:#eee;
+border-radius:999px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:0%;
+background:#ff7eb3;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+border-radius:15px;
+background:#ff7eb3;
+color:white;
+font-size:16px;
+}
+</style>
 </head>
+
 <body>
+
+<div class="card">
+
 <h1>🍓 Growing Little Gadis 🍓</h1>
-<p>Website sedang dibangun...</p>
+
+<div class="bubble" id="bubble">
+Halo, aku Gadis Berry! 💖
+</div>
+
+<img
+class="mascot"
+src="https://i.imgur.com/K0XhJ0F.png"
+>
+
+<h3>💖 Semangat untuk Gadis</h3>
+
+<div class="bar">
+<div class="fill" id="fill"></div>
+</div>
+
+<p>
+<span id="energy">0</span>/10000
+</p>
+
+<button onclick="support()">
+💖 Kirim Semangat
+</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+let energy =
+Number(localStorage.getItem("energy")||0);
+
+function render(){
+
+document.getElementById("energy").innerText =
+energy;
+
+document.getElementById("fill").style.width =
+(energy/10000*100)+"%";
+
+}
+
+function support(){
+
+energy++;
+
+localStorage.setItem(
+"energy",
+energy
+);
+
+document.getElementById("status")
+.innerText =
+"🍓 Gadis menerima semangatmu!";
+
+render();
+
+}
+
+render();
+
+</script>
+
 </body>
 </html>
