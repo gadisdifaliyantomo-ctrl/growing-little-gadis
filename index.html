@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🍓 Growing Little Gadis</title>
+<title>🍓 Growing Gadis</title>
 
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,219 +17,190 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'VT323', monospace;
-background:#ffd6e7;
-background-image:
-linear-gradient(#ffffff33 1px, transparent 1px),
-linear-gradient(90deg,#ffffff33 1px, transparent 1px);
-background-size:24px 24px;
+font-family:'Fredoka',sans-serif;
+background:linear-gradient(
+180deg,
+#ffe7f1 0%,
+#fff5f9 100%
+);
 min-height:100vh;
+overflow-x:hidden;
+}
+
+.container{
+max-width:480px;
+margin:auto;
 padding:20px;
 }
 
-.gameboy{
-
-max-width:420px;
-margin:auto;
-
-background:#fff7fa;
-
-border:6px solid #000;
-
-box-shadow:8px 8px 0 #000;
-
-padding:18px;
-
-}
-
 .title{
-
 text-align:center;
-font-size:42px;
-line-height:1.1;
-
-margin-bottom:18px;
-
+font-size:34px;
+font-weight:600;
+color:#ff5b93;
+margin-top:10px;
 }
 
-.weather{
-
+.subtitle{
 text-align:center;
-
-font-size:28px;
-
-margin-bottom:10px;
-
+color:#888;
+margin-top:5px;
+font-size:18px;
 }
 
-.screen{
-
-background:#d8ffd8;
-
-border:5px solid #000;
-
-padding:15px;
-
-margin-bottom:15px;
-
+.chat-bubble{
+background:white;
+padding:14px;
+border-radius:20px;
+margin-top:18px;
 text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+font-size:18px;
+}
 
+.mascot-area{
+position:relative;
+text-align:center;
+margin-top:20px;
 }
 
 .mascot{
-
-width:220px;
-
-max-width:100%;
-
-animation:float 2s infinite ease-in-out;
-
+width:280px;
+max-width:90%;
+animation:float 3s ease-in-out infinite;
 }
 
 @keyframes float{
-
 0%{transform:translateY(0);}
-50%{transform:translateY(-6px);}
+50%{transform:translateY(-12px);}
 100%{transform:translateY(0);}
-
 }
 
-.dialog{
+.decor{
+font-size:30px;
+margin-top:10px;
+}
 
+.card{
 background:white;
-
-border:4px solid black;
-
-padding:10px;
-
-font-size:24px;
-
-margin-top:12px;
-
+padding:18px;
+border-radius:24px;
+margin-top:18px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.world{
-
-background:white;
-
-border:4px solid black;
-
-padding:12px;
-
-margin-bottom:15px;
-
-}
-
-.world-title{
-
-font-size:28px;
-
-margin-bottom:8px;
-
-}
-
-.world-decor{
-
-font-size:34px;
-
+.progress-title{
 text-align:center;
-
-}
-
-.progress-box{
-
-background:white;
-
-border:4px solid black;
-
-padding:12px;
-
-margin-bottom:15px;
-
+font-size:22px;
+font-weight:600;
+color:#ff5b93;
 }
 
 .progress{
-
-height:24px;
-
-border:3px solid black;
-
-background:#fff;
-
+height:20px;
+background:#ffe2ee;
+border-radius:999px;
 overflow:hidden;
-
+margin-top:12px;
 }
 
 .fill{
-
 height:100%;
-
 width:0%;
-
-background:#ff75b5;
-
+background:linear-gradient(
+90deg,
+#ff96bd,
+#ff5b93
+);
 transition:.4s;
-
 }
 
 .counter{
-
 text-align:center;
-
-font-size:28px;
-
-margin-top:8px;
-
+font-size:22px;
+margin-top:10px;
 }
 
-button{
-
+.button{
 width:100%;
-
+border:none;
 padding:16px;
-
-font-size:30px;
-
-font-family:'VT323', monospace;
-
-border:4px solid black;
-
-background:#ff75b5;
-
-box-shadow:5px 5px 0 black;
-
+margin-top:18px;
+border-radius:20px;
+font-size:20px;
+font-weight:600;
+background:#ff6ea7;
+color:white;
 cursor:pointer;
-
 }
 
-button:active{
+.button:active{
+transform:scale(.97);
+}
 
-transform:translate(5px,5px);
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:18px;
+}
 
-box-shadow:none;
+.stat{
+background:white;
+padding:14px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
 
+.stat-title{
+font-size:14px;
+color:#888;
+}
+
+.stat-value{
+font-size:20px;
+font-weight:600;
+margin-top:4px;
 }
 
 .status{
-
 text-align:center;
-
 margin-top:12px;
-
-font-size:24px;
-
-min-height:30px;
-
+font-size:18px;
+color:#ff5b93;
+min-height:24px;
 }
 
-.footer{
+.floating{
+position:fixed;
+pointer-events:none;
+font-size:22px;
+animation:fall 10s linear infinite;
+opacity:.5;
+}
 
-margin-top:15px;
+.f1{
+left:10%;
+top:-20px;
+}
 
-text-align:center;
+.f2{
+left:70%;
+top:-80px;
+animation-delay:3s;
+}
 
-font-size:20px;
+.f3{
+left:40%;
+top:-50px;
+animation-delay:6s;
+}
 
+@keyframes fall{
+to{
+transform:translateY(120vh);
+}
 }
 
 </style>
@@ -237,63 +208,79 @@ font-size:20px;
 
 <body>
 
-<div class="gameboy">
+<div class="floating f1">🌸</div>
+<div class="floating f2">🍓</div>
+<div class="floating f3">✨</div>
+
+<div class="container">
 
 <div class="title">
-🍓 GROWING<br>GADIS 🍓
+🍓 Growing Gadis
 </div>
 
-<div class="weather" id="mood">
+<div class="subtitle" id="mood">
 ☀️ Sedang Sarapan
 </div>
 
-<div class="screen">
+<div class="chat-bubble" id="dialog">
+Haiii! Makasih sudah datang hari ini 💖
+</div>
+
+<div class="mascot-area">
 
 <img
 src="gadis-berry.png"
 class="mascot"
->
+alt="Gadis Berry">
 
-<div class="dialog" id="dialog">
-Haiii! Makasih sudah mampir 🍓
-</div>
-
-</div>
-
-<div class="world">
-
-<div class="world-title">
-🌎 WORLD LEVEL
-</div>
-
-<div class="world-decor" id="decor">
+<div class="decor" id="decor">
 🍓
 </div>
 
 </div>
 
-<div class="progress-box">
+<div class="card">
+
+<div class="progress-title">
+💖 Semangat untuk Gadis
+</div>
 
 <div class="progress">
-
 <div class="fill" id="fill"></div>
-
 </div>
 
 <div class="counter">
 <span id="energy">0</span> / 10000
 </div>
 
-</div>
-
-<button onclick="support()">
-💖 KIRIM SEMANGAT
+<button class="button" onclick="support()">
+💖 Kirim Semangat
 </button>
 
 <div class="status" id="status"></div>
 
-<div class="footer">
-Community Project by Gadis 🍓
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-title">
+🌸 Dunia
+</div>
+<div class="stat-value" id="world">
+Berry Meadow
+</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">
+🔥 Level
+</div>
+<div class="stat-value" id="level">
+1
+</div>
+</div>
+
 </div>
 
 </div>
@@ -306,75 +293,100 @@ Number(localStorage.getItem("energy") || 0);
 const dialogs = [
 
 "Aku senang kamu datang hari ini 🍓",
-
 "Semangatmu membuatku lebih kuat 💖",
-
 "Besok mampir lagi ya ✨",
-
 "Aku sedang berusaha tumbuh 🌱",
-
 "Kita bangun dunia ini bersama 🥺",
-
-"Terima kasih sudah support aku 🍓"
+"Makasih sudah support aku 🍓"
 
 ];
 
 function updateMood(){
 
-const hour = new Date().getHours();
+const hour =
+new Date().getHours();
 
-let mood = "";
+let mood="";
 
-if(hour >= 6 && hour < 10)
-mood = "☀️ Sedang Sarapan";
+if(hour>=6 && hour<10)
+mood="☀️ Sedang Sarapan";
 
-else if(hour < 14)
-mood = "📷 Sedang Foto Studio";
+else if(hour<14)
+mood="📷 Sedang Photoshoot";
 
-else if(hour < 18)
-mood = "☕ Sedang Nongkrong";
+else if(hour<18)
+mood="☕ Sedang Nongkrong";
 
-else if(hour < 22)
-mood = "🎤 Sedang Latihan Idol";
+else if(hour<22)
+mood="🎤 Sedang Latihan Idol";
 
 else
-mood = "😴 Sudah Mengantuk";
+mood="😴 Sedang Tidur";
 
-document.getElementById("mood").innerText = mood;
+document.getElementById("mood")
+.innerText=mood;
 
 }
 
 function updateWorld(){
 
-let decor = "🍓";
+let decor="🍓";
+let world="Berry Meadow";
+let level="1";
 
-if(energy >= 100)
-decor = "🌱 🍓";
+if(energy>=100){
+decor="🌱 🍓";
+level="2";
+}
 
-if(energy >= 500)
-decor = "🌱 🌷 🍓";
+if(energy>=500){
+decor="🌱 🌷 🍓";
+world="Berry Garden";
+level="3";
+}
 
-if(energy >= 1000)
-decor = "🏡 🌷 🍓";
+if(energy>=1000){
+decor="🏡 🌷 🍓";
+world="Berry Home";
+level="4";
+}
 
-if(energy >= 3000)
-decor = "☕ 🏡 🌷 🍓";
+if(energy>=3000){
+decor="☕ 🏡 🌷 🍓";
+world="Berry Café";
+level="5";
+}
 
-if(energy >= 5000)
-decor = "🎤 ☕ 🏡 🌷 🍓";
+if(energy>=5000){
+decor="🎤 ☕ 🏡 🌷 🍓";
+world="Berry Idol";
+level="6";
+}
 
-if(energy >= 10000)
-decor = "👑 🎤 ☕ 🏡 🌷 🍓";
+if(energy>=10000){
+decor="👑 🎤 ☕ 🏡 🌷 🍓";
+world="Queen Berry";
+level="7";
+}
 
-document.getElementById("decor").innerHTML = decor;
+document.getElementById("decor")
+.innerHTML=decor;
+
+document.getElementById("world")
+.innerText=world;
+
+document.getElementById("level")
+.innerText=level;
 
 }
 
 function render(){
 
-document.getElementById("energy").innerText = energy;
+document.getElementById("energy")
+.innerText=energy;
 
-document.getElementById("fill").style.width =
+document.getElementById("fill")
+.style.width=
 Math.min((energy/10000)*100,100)+"%";
 
 updateWorld();
@@ -385,20 +397,24 @@ function support(){
 
 energy++;
 
-localStorage.setItem("energy", energy);
+localStorage.setItem(
+"energy",
+energy
+);
 
-document.getElementById("status").innerText =
-"🍓 Gadis menerima semangatmu!";
-
-document.getElementById("dialog").innerText =
+document.getElementById("dialog")
+.innerText=
 dialogs[Math.floor(Math.random()*dialogs.length)];
+
+document.getElementById("status")
+.innerText=
+"🍓 Semangat berhasil dikirim!";
 
 render();
 
 }
 
 updateMood();
-
 render();
 
 </script>
