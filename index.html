@@ -3,109 +3,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Growing Little Gadis</title>
+
+<title>🍓 Growing Little Gadis</title>
+
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
 <style>
-body{
+
+*{
 margin:0;
-font-family:sans-serif;
-background:linear-gradient(#ffd6e7,#fff);
-text-align:center;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'VT323', monospace;
+background:#ffd6e7;
+background-image:
+linear-gradient(#ffffff33 1px, transparent 1px),
+linear-gradient(90deg,#ffffff33 1px, transparent 1px);
+background-size:24px 24px;
+min-height:100vh;
 padding:20px;
 }
 
-.card{
-max-width:500px;
+.gameboy{
+
+max-width:420px;
 margin:auto;
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 4px 20px rgba(0,0,0,.1);
+
+background:#fff7fa;
+
+border:6px solid #000;
+
+box-shadow:8px 8px 0 #000;
+
+padding:18px;
+
+}
+
+.title{
+
+text-align:center;
+font-size:42px;
+line-height:1.1;
+
+margin-bottom:18px;
+
+}
+
+.weather{
+
+text-align:center;
+
+font-size:28px;
+
+margin-bottom:10px;
+
+}
+
+.screen{
+
+background:#d8ffd8;
+
+border:5px solid #000;
+
+padding:15px;
+
+margin-bottom:15px;
+
+text-align:center;
+
 }
 
 .mascot{
-width:250px;
-max-width:90%;
+
+width:220px;
+
+max-width:100%;
+
+animation:float 2s infinite ease-in-out;
+
 }
 
-.bubble{
-background:#fff0f6;
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-6px);}
+100%{transform:translateY(0);}
+
+}
+
+.dialog{
+
+background:white;
+
+border:4px solid black;
+
+padding:10px;
+
+font-size:24px;
+
+margin-top:12px;
+
+}
+
+.world{
+
+background:white;
+
+border:4px solid black;
+
 padding:12px;
-border-radius:15px;
+
 margin-bottom:15px;
-font-weight:bold;
+
 }
 
-.bar{
+.world-title{
+
+font-size:28px;
+
+margin-bottom:8px;
+
+}
+
+.world-decor{
+
+font-size:34px;
+
+text-align:center;
+
+}
+
+.progress-box{
+
+background:white;
+
+border:4px solid black;
+
+padding:12px;
+
+margin-bottom:15px;
+
+}
+
+.progress{
+
 height:24px;
-background:#eee;
-border-radius:999px;
+
+border:3px solid black;
+
+background:#fff;
+
 overflow:hidden;
+
 }
 
 .fill{
+
 height:100%;
+
 width:0%;
-background:#ff7eb3;
+
+background:#ff75b5;
+
+transition:.4s;
+
+}
+
+.counter{
+
+text-align:center;
+
+font-size:28px;
+
+margin-top:8px;
+
 }
 
 button{
-margin-top:15px;
-padding:12px 20px;
-border:none;
-border-radius:15px;
-background:#ff7eb3;
-color:white;
-font-size:16px;
+
+width:100%;
+
+padding:16px;
+
+font-size:30px;
+
+font-family:'VT323', monospace;
+
+border:4px solid black;
+
+background:#ff75b5;
+
+box-shadow:5px 5px 0 black;
+
+cursor:pointer;
+
 }
+
+button:active{
+
+transform:translate(5px,5px);
+
+box-shadow:none;
+
+}
+
+.status{
+
+text-align:center;
+
+margin-top:12px;
+
+font-size:24px;
+
+min-height:30px;
+
+}
+
+.footer{
+
+margin-top:15px;
+
+text-align:center;
+
+font-size:20px;
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="gameboy">
 
-<h1>🍓 Growing Little Gadis 🍓</h1>
-
-<div class="bubble" id="bubble">
-Halo, aku Gadis Berry! 💖
+<div class="title">
+🍓 GROWING<br>GADIS 🍓
 </div>
+
+<div class="weather" id="mood">
+☀️ Sedang Sarapan
+</div>
+
+<div class="screen">
 
 <img
-class="mascot"
 src="gadis-berry.png"
+class="mascot"
 >
 
-<h3>💖 Semangat untuk Gadis</h3>
-
-<div class="bar">
-<div class="fill" id="fill"></div>
+<div class="dialog" id="dialog">
+Haiii! Makasih sudah mampir 🍓
 </div>
 
-<p>
-<span id="energy">0</span>/10000
-</p>
+</div>
+
+<div class="world">
+
+<div class="world-title">
+🌎 WORLD LEVEL
+</div>
+
+<div class="world-decor" id="decor">
+🍓
+</div>
+
+</div>
+
+<div class="progress-box">
+
+<div class="progress">
+
+<div class="fill" id="fill"></div>
+
+</div>
+
+<div class="counter">
+<span id="energy">0</span> / 10000
+</div>
+
+</div>
 
 <button onclick="support()">
-💖 Kirim Semangat
+💖 KIRIM SEMANGAT
 </button>
 
-<p id="status"></p>
+<div class="status" id="status"></div>
+
+<div class="footer">
+Community Project by Gadis 🍓
+</div>
 
 </div>
 
 <script>
 
 let energy =
-Number(localStorage.getItem("energy")||0);
+Number(localStorage.getItem("energy") || 0);
+
+const dialogs = [
+
+"Aku senang kamu datang hari ini 🍓",
+
+"Semangatmu membuatku lebih kuat 💖",
+
+"Besok mampir lagi ya ✨",
+
+"Aku sedang berusaha tumbuh 🌱",
+
+"Kita bangun dunia ini bersama 🥺",
+
+"Terima kasih sudah support aku 🍓"
+
+];
+
+function updateMood(){
+
+const hour = new Date().getHours();
+
+let mood = "";
+
+if(hour >= 6 && hour < 10)
+mood = "☀️ Sedang Sarapan";
+
+else if(hour < 14)
+mood = "📷 Sedang Foto Studio";
+
+else if(hour < 18)
+mood = "☕ Sedang Nongkrong";
+
+else if(hour < 22)
+mood = "🎤 Sedang Latihan Idol";
+
+else
+mood = "😴 Sudah Mengantuk";
+
+document.getElementById("mood").innerText = mood;
+
+}
+
+function updateWorld(){
+
+let decor = "🍓";
+
+if(energy >= 100)
+decor = "🌱 🍓";
+
+if(energy >= 500)
+decor = "🌱 🌷 🍓";
+
+if(energy >= 1000)
+decor = "🏡 🌷 🍓";
+
+if(energy >= 3000)
+decor = "☕ 🏡 🌷 🍓";
+
+if(energy >= 5000)
+decor = "🎤 ☕ 🏡 🌷 🍓";
+
+if(energy >= 10000)
+decor = "👑 🎤 ☕ 🏡 🌷 🍓";
+
+document.getElementById("decor").innerHTML = decor;
+
+}
 
 function render(){
 
-document.getElementById("energy").innerText =
-energy;
+document.getElementById("energy").innerText = energy;
 
 document.getElementById("fill").style.width =
-(energy/10000*100)+"%";
+Math.min((energy/10000)*100,100)+"%";
+
+updateWorld();
 
 }
 
@@ -113,18 +385,19 @@ function support(){
 
 energy++;
 
-localStorage.setItem(
-"energy",
-energy
-);
+localStorage.setItem("energy", energy);
 
-document.getElementById("status")
-.innerText =
+document.getElementById("status").innerText =
 "🍓 Gadis menerima semangatmu!";
+
+document.getElementById("dialog").innerText =
+dialogs[Math.floor(Math.random()*dialogs.length)];
 
 render();
 
 }
+
+updateMood();
 
 render();
 
